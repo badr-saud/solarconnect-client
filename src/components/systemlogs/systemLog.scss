@@ -1,0 +1,43 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  // background-color: #111; // Slightly lighter black for table
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  // background-color: #222; // Dark gray for contrast
+  text-transform: uppercase;
+
+  th {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #444;
+  }
+}
+
+tbody {
+  tr {
+    transition: background 0.3s ease-in-out;
+
+    // &:nth-child(even) {
+    //   background-color: #181818; // Alternate row color
+    // }
+    //
+    // &:hover {
+    //   background-color: #292929; // Hover effect
+    // }
+  }
+
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+  }
+}
+
+td,
+th {
+  padding: 12px;
+}
+

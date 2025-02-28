@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+
+.menu {
+
+  background-color: $menu-bg;
+  padding:5px;
+  border-radius: $bd-rs;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  .listItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: $bd-rs;
+
+    &:hover {
+      background-color: #efeff0 ;
+      // color: $main-color
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    .logo {
+      width: 125px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .text {
+      text-align: left;
+
+      .greet {
+        font-weight: normal;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    .connection {
+      background-color: $card-bg;
+      color: $card-text;
+      border-radius: $bd-rs;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding:10px;
+
+      .icon {
+        color: $green;
+      }
+
+      .fibre {
+        display: flex;
+        align-items: center;
+        gap:10px
+      }
+    }
+
+    .dateinfo {
+      text-align: center;
+      background-color: $card-bg;
+      color: $card-text;
+      border-radius: $bd-rs;
+      padding:8px;
+    }
+  }
+}
