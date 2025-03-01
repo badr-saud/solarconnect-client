@@ -20,7 +20,7 @@ const Home = () => {
   const [inputValue, setInputValue] = useState("8.8.8.8");
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState(false);
-  
+
   async function getLightStatus() {
     try {
       const response = await axios.get(`${URL}light-status`);
@@ -31,7 +31,7 @@ const Home = () => {
       console.log(e);
     }
   }
-  
+
   const getSpeedData = async () => {
     try {
       const response = await axios.get(`${URL}speed`);
@@ -43,47 +43,49 @@ const Home = () => {
       console.log(e);
     }
   };
-  
+
   useEffect(() => {
     getLightStatus();
     getSpeedData();
   }, []);
-  
+
   // Show success popup when connection is established
   useEffect(() => {
     if (connectionStatus) {
       setShowSuccessPopup(true);
-      
+
       // Hide popup after 3 seconds
       const timer = setTimeout(() => {
         setShowSuccessPopup(false);
       }, 3000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [connectionStatus]);
-  
+
   const handleIpSubmit = (e) => {
     e.preventDefault();
-    
+
     // Basic IP validation
-    const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-    
+    const ipRegex =
+      /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
     // Domain name format validation (basic)
-    const domainRegex = /^([a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
-    
+    const domainRegex =
+      /^([a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+
     if (ipRegex.test(inputValue) || domainRegex.test(inputValue)) {
       setIpAddress(inputValue);
     } else {
       alert("Please enter a valid IP address or domain name");
     }
   };
-  
+
   // Function to handle connection status update from Pinger
   const handleConnectionUpdate = (isConnected) => {
     setConnectionStatus(isConnected);
   };
-  
+
   return (
     <div className="home">
       {showSuccessPopup && (
@@ -93,8 +95,8 @@ const Home = () => {
             <div className="connection-popup__message">
               Successfully connected to {ipAddress}
             </div>
-            <button 
-              className="connection-popup__close" 
+            <button
+              className="connection-popup__close"
               onClick={() => setShowSuccessPopup(false)}
             >
               ×
@@ -102,7 +104,27 @@ const Home = () => {
           </div>
         </div>
       )}
-      
+
+      <div className="box box8">
+        <div className="ping-status__title">Connection Status</div>
+        <div className="ping-status__ip-address">{ipAddress}</div>
+        <form onSubmit={handleIpSubmit} className="ping-status__ip-form">
+          <input
+            className="ping-status__ip-input"
+            placeholder="Enter IP address or domain"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <button type="submit" className="ping-status__ip-submit">
+            Check
+          </button>
+        </form>
+        <Pinger
+          ipAddress={ipAddress}
+          onConnectionChange={handleConnectionUpdate}
+        />
+      </div>
+
       <div className="box box1">
         <FaSolarPanel size={55} />
         <div className="text">
@@ -110,9 +132,9 @@ const Home = () => {
           <p>{lightLevel}% light</p>
         </div>
       </div>
-      <div className="box box2">
-        <DataUsage />
-      </div>
+      {/*<div className="box box2">
+       <DataUsage />
+      </div>*/}
       <div className="box box3">
         <p className="title">Current Internet Speed</p>
         <div className="container">
@@ -147,25 +169,6 @@ const Home = () => {
       </div>
       <div className="box box7">
         <BatteryBox />
-      </div>
-      <div className="box box8">
-        <div className="ping-status__title">Connection Status</div>
-        <div className="ping-status__ip-address">{ipAddress}</div>
-        <form onSubmit={handleIpSubmit} className="ping-status__ip-form">
-          <input
-            className="ping-status__ip-input"
-            placeholder="Enter IP address or domain"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <button type="submit" className="ping-status__ip-submit">
-            Check
-          </button>
-        </form>
-        <Pinger 
-          ipAddress={ipAddress} 
-          onConnectionChange={handleConnectionUpdate}
-        />
       </div>
     </div>
   );

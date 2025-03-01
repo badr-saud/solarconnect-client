@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import { FaEthernet } from "react-icons/fa";
 import { FaSimCard } from "react-icons/fa6";
@@ -6,7 +6,7 @@ import { FaCircleInfo } from "react-icons/fa6";
 import { PiWifiHighFill } from "react-icons/pi";
 import { IoIosSettings } from "react-icons/io";
 import { LuLogs } from "react-icons/lu";
-import "./menu.scss"
+import "./menu.scss";
 
 const Menu = () => {
   return (
@@ -15,7 +15,16 @@ const Menu = () => {
         <IoHome />
         <span>Home</span>
       </Link>
-      <Link className="listItem" to="/">
+      <a
+        className="listItem"
+        href="http://192.168.100.1/"
+        rel="noopener noreferrer" // Security best practice for external links
+        target="_blank"
+      >
+        <PiWifiHighFill />
+        <span>Router Page</span>
+      </a>
+      {/*<Link className="listItem" to="/">
         <FaEthernet />
         <span>Ethernet Settings</span>
       </Link>
@@ -28,7 +37,6 @@ const Menu = () => {
         <span>System Info.</span>
       </Link>
       <Link className="listItem" to="/">
-        <PiWifiHighFill />
         <span>WiFi Settings</span>
       </Link>
       <Link className="listItem" to="/">
@@ -38,9 +46,9 @@ const Menu = () => {
       <Link className="listItem" to="/">
         <LuLogs />
         <span>Logs</span>
-      </Link>
+      </Link>*/}
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

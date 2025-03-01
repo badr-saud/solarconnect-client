@@ -33,18 +33,18 @@ const Navbar = () => {
       <div className="right">
         <div className="connection">
           <div className="icon wifi">
-            <IoWifi size={35} />
+            {/*<IoWifi size={35} />*/}
           </div>
 
           <div className="hline"></div>
 
           <div className="icon 5g">
-            <TbSignal5G size={35} />
+            {/*<TbSignal5G size={35} />*/}
           </div>
 
           <div className="fibre">
-            <BsEthernet size={25} />
-            Not connected
+            {/*<BsEthernet size={25} />*/}
+            {/*Not connected*/}
           </div>
         </div>
 
