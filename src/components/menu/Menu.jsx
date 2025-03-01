@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
-import { FaEthernet } from "react-icons/fa";
-import { FaSimCard } from "react-icons/fa6";
-import { FaCircleInfo } from "react-icons/fa6";
-import { PiWifiHighFill } from "react-icons/pi";
-import { IoIosSettings } from "react-icons/io";
-import { LuLogs } from "react-icons/lu";
+import {MdRouter } from "react-icons/md"
 import "./menu.scss";
 
 const Menu = () => {
@@ -21,7 +16,7 @@ const Menu = () => {
         rel="noopener noreferrer" // Security best practice for external links
         target="_blank"
       >
-        <PiWifiHighFill />
+        <MdRouter />
         <span>Router Page</span>
       </a>
       {/*<Link className="listItem" to="/">
