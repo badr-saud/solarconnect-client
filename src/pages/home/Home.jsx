@@ -9,6 +9,7 @@ import SpeedHistory from "../../components/speedhistory/SpeedHistory";
 import UsageOverTime from "../../components/usageOverTime/UsageOverTime";
 import SystemLogs from "../../components/systemlogs/SystemLogs";
 import Pinger from "../../components/pinger/Pinger";
+import LightPercentage from "../../components/lightpercentage/LightPercentage";
 
 const URL = `${import.meta.env.VITE_API_URL}`;
 
@@ -127,10 +128,7 @@ const Home = () => {
 
       <div className="box box1">
         <FaSolarPanel size={55} />
-        <div className="text">
-          <h3>{status}</h3>
-          <p>{lightLevel}% light</p>
-        </div>
+        <LightPercentage />
       </div>
       {/*<div className="box box2">
        <DataUsage />
